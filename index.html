@@ -1,0 +1,220 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10172a">
+<title>إنجازي — خطّط، أنجز، ارتقِ</title>
+<style>
+:root{--bg:#0a1020;--panel:#121d33;--panel2:#1b2944;--text:#f2f6ff;--muted:#a6b5cf;--mint:#67e2bd;--blue:#83a8ff;--gold:#ffd477;--pink:#ff8db5;--line:#2b3a58}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1b3151 0,transparent 36%),linear-gradient(145deg,#090f1d,#111e34);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;padding:20px}
+main{max-width:900px;margin:auto}.hero{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:12px 0 20px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--mint),#5ba8ff);font-size:28px;box-shadow:0 8px 25px #67e2bd30}
+h1{font-size:30px;margin:0;letter-spacing:-1px}.tagline{color:var(--muted);margin-top:3px;font-size:14px}.date-pill{border:1px solid var(--line);background:#14223a;padding:10px 14px;border-radius:14px;color:var(--mint);font-weight:700}
+.grid{display:grid;grid-template-columns:1.35fr .9fr;gap:14px}.card{background:linear-gradient(160deg,#15233b,#111c30);border:1px solid var(--line);border-radius:22px;padding:19px;box-shadow:0 15px 38px #0003;margin-bottom:14px}
+.card h2{font-size:18px;margin:0 0 13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#1b2b47;border:1px solid #2b3e5e;padding:13px 8px;border-radius:16px;text-align:center}.num{font-size:25px;font-weight:850;color:var(--mint)}.small{font-size:12px;color:var(--muted)}
+.progress-head{display:flex;justify-content:space-between;align-items:center;margin-top:17px;font-size:13px;color:var(--muted)}.progress{height:11px;background:#263854;border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;width:0;background:linear-gradient(90deg,#56d9b0,#8ba8ff);border-radius:99px;transition:width .35s}
+.levelbox{display:flex;align-items:center;gap:12px}.level-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:17px;background:#3a3150;color:var(--gold);font-size:25px}.level-info{flex:1}.level-title{font-weight:800}.xp{font-size:12px;color:var(--muted);margin-top:3px}
+.quote{border:1px solid #4c4770;background:linear-gradient(120deg,#282848,#1b2945);color:#e7e4ff}.quote p{margin:0;font-size:16px;font-weight:700;line-height:1.7}.quote small{color:#b9b5df}
+form{display:grid;grid-template-columns:1fr 130px 120px 145px auto;gap:8px;margin-top:10px}
+input,select{min-width:0;background:#0c1729;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--text);font:inherit;outline:none}input:focus,select:focus{border-color:var(--mint)}
+button{border:0;border-radius:12px;padding:11px 15px;background:var(--mint);color:#082019;font-weight:800;font:inherit;cursor:pointer;transition:transform .15s,filter .15s}button:hover{filter:brightness(1.08);transform:translateY(-1px)}button:active{transform:scale(.98)}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 4px}.filter{background:#1b2b47;color:var(--muted);border:1px solid var(--line);padding:7px 12px;font-size:13px}.filter.active{background:#214d4a;color:var(--mint);border-color:#397b70}
+ul{list-style:none;padding:0;margin:10px 0 0}.task{display:flex;align-items:center;gap:10px;background:#0e1a2d;border:1px solid var(--line);padding:12px;border-radius:15px;margin:8px 0}.task.done{opacity:.68}.task.done .taskname{text-decoration:line-through;color:var(--muted)}.task input[type=checkbox]{width:19px;height:19px;accent-color:var(--mint);flex:none}.taskname{flex:1;overflow-wrap:anywhere}.meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}.chip{font-size:10px;border-radius:99px;padding:3px 7px;background:#263650;color:#bdcce4}.priority-high{background:#48283a;color:#ffabc4}.priority-medium{background:#453a25;color:#ffdb8b}.priority-low{background:#1e3e3b;color:#9debd4}.delete{background:#3d2637;color:#ffc0d7;padding:7px 10px;font-size:12px}
+.empty{text-align:center;color:var(--muted);padding:22px 8px}.empty .emoji{font-size:32px;display:block;margin-bottom:6px}.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.quick button{background:#1b2b47;color:var(--text);border:1px solid var(--line);text-align:right;font-size:13px}.quick button span{display:block;color:var(--muted);font-size:11px;margin-top:3px;font-weight:400}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.badge{background:#1a2943;border:1px solid var(--line);border-radius:14px;padding:11px 6px;text-align:center;opacity:.45}.badge.unlocked{opacity:1;border-color:#7a6c40;background:#302c28}.badge b{display:block;font-size:22px}.badge span{font-size:11px;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.secondary{background:#253653;color:#dce8ff}.danger{background:#482637;color:#ffd1df}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin:18px 0 5px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#d8fff1;color:#073126;padding:11px 17px;border-radius:99px;font-weight:800;box-shadow:0 10px 30px #0005;transition:.25s;z-index:5}#toast.show{opacity:1;transform:translate(-50%,0)}
+.spark{position:fixed;pointer-events:none;font-size:22px;animation:pop .8s ease-out forwards;z-index:4}@keyframes pop{0%{opacity:0;transform:translateY(0) scale(.4)}20%{opacity:1}100%{opacity:0;transform:translateY(-90px) scale(1.4)}}
+@media(max-width:700px){body{padding:13px}.grid{grid-template-columns:1fr}.hero{align-items:flex-start}form{grid-template-columns:1fr 1fr}form input:first-child{grid-column:1/-1}form button{grid-column:1/-1}.stats{gap:6px}.stat{padding:11px 4px}.num{font-size:22px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="brand"><div class="logo">🚀</div><div><h1>إنجازي</h1><div class="tagline">خطّط، أنجز، وارتقِ كل يوم.</div></div></div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<select id="language" aria-label="Language" style="max-width:145px"><option value="ar">🌐 العربية</option><option value="en">🇬🇧 English</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option><option value="de">🇩🇪 Deutsch</option><option value="tr">🇹🇷 Türkçe</option></select>
+<div class="date-pill" id="today"></div>
+</div>
+</header>
+<div class="grid">
+<section>
+<div class="card">
+<h2>📊 لوحة إنجازك</h2>
+<div class="stats">
+<div class="stat"><div class="num" id="total">0</div><div class="small">كل المهام</div></div>
+<div class="stat"><div class="num" id="completed">0</div><div class="small">منجزة</div></div>
+<div class="stat"><div class="num" id="percent">0%</div><div class="small">نسبة الإنجاز</div></div>
+</div>
+<div class="progress-head"><span>تقدم اليوم</span><strong id="progressText">ابدأ أول مهمة!</strong></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+<div class="card">
+<h2>➕ أضف مهمة جديدة</h2>
+<form id="form">
+<input id="newTask" maxlength="90" placeholder="مثلاً: أذاكر 30 دقيقة..." autocomplete="off" required>
+<select id="category" aria-label="التصنيف"><option value="📚 دراسة">📚 دراسة</option><option value="💻 مهارة">💻 مهارة</option><option value="🏃 صحة">🏃 صحة</option><option value="🏠 شخصي">🏠 شخصي</option><option value="🎮 ترفيه">🎮 ترفيه</option></select>
+<select id="priority" aria-label="الأولوية"><option value="medium">متوسطة</option><option value="high">مهمة جداً</option><option value="low">بسيطة</option></select>
+<input id="dueDate" type="date" aria-label="موعد المهمة">
+<button type="submit">إضافة +</button>
+</form>
+<div class="filters">
+<button class="filter active" data-filter="all">الكل</button>
+<button class="filter" data-filter="active">المتبقية</button>
+<button class="filter" data-filter="done">المنجزة</button>
+</div>
+<input id="searchTask" placeholder="🔎 ابحث عن مهمة..." style="width:100%;margin:8px 0">
+<ul id="tasks"></ul>
+<div class="empty" id="empty"><span class="emoji">🌱</span>لسه مفيش مهام. ابدأ بأول خطوة!</div>
+</div>
+</section>
+<aside>
+<div class="card">
+<h2>🏆 مستواك</h2>
+<div class="levelbox"><div class="level-icon">⭐</div><div class="level-info"><div class="level-title" id="level">المستوى 1</div><div class="xp" id="xpText">0 نقطة خبرة</div></div></div>
+<div class="progress"><div class="bar" id="xpBar"></div></div>
+<div class="small" style="margin-top:8px">أنجز المهام واجمع نقاط الخبرة. كل مهمة منجزة = 10 نقاط.</div>
+</div>
+<div class="card quote">
+<h2>💡 دفعة تحفيز</h2>
+<p id="quote">الإنجاز الكبير يبدأ بخطوة صغيرة.</p>
+<div class="actions"><button class="secondary" id="newQuote">اقتباس جديد ↻</button></div>
+</div>
+<div class="card">
+<h2>⚡ مهام سريعة</h2>
+<div class="quick">
+<button data-quick="أذاكر 25 دقيقة">📖 جلسة مذاكرة<span>25 دقيقة تركيز</span></button>
+<button data-quick="أقرأ 10 صفحات">📘 قراءة<span>10 صفحات</span></button>
+<button data-quick="أرتب مكتبي">🧹 ترتيب<span>5 دقائق</span></button>
+<button data-quick="أتعلم شيئاً جديداً">🧠 تعلم<span>معلومة جديدة</span></button>
+</div>
+</div>
+<div class="card">
+<h2>⏱️ مؤقّت التركيز</h2>
+<div style="text-align:center;padding:8px 0">
+<div id="timer" style="font-size:42px;font-weight:900;letter-spacing:2px;color:var(--mint)">25:00</div>
+<div class="small">جلسة تركيز — خذ استراحة قصيرة بعدها</div>
+</div>
+<div class="actions" style="justify-content:center">
+<button id="timerStart">ابدأ</button>
+<button class="secondary" id="timerPause">إيقاف مؤقت</button>
+<button class="secondary" id="timerReset">إعادة</button>
+</div>
+</div>
+<div class="card">
+<h2>🎯 تحدّي اليوم</h2>
+<p id="challengeText" style="line-height:1.7;margin:0 0 10px">أنجز مهمة واحدة مؤجلة اليوم.</p>
+<button class="secondary" id="newChallenge">تحدٍّ آخر ↻</button>
+</div>
+<div class="card">
+<h2>🎖️ شاراتك</h2>
+<div class="badges">
+<div class="badge" id="badge1"><b>🌟</b><span>أول إنجاز</span></div>
+<div class="badge" id="badge5"><b>🔥</b><span>5 إنجازات</span></div>
+<div class="badge" id="badge10"><b>👑</b><span>10 إنجازات</span></div>
+</div>
+<div class="actions"><button class="secondary" id="clearDone">حذف المنجَز</button><button class="danger" id="reset">إعادة ضبط الكل</button></div>
+</div>
+</aside>
+</div>
+<div class="footer">🔒 مهامك محفوظة على هذا الجهاز في المتصفح، ولا تُرسل إلى أي مكان.</div>
+</main>
+<div id="toast" role="status"></div>
+<script>
+const KEY='engazy_tasks_v2';
+let tasks=[],filter='all';
+try{tasks=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(tasks))tasks=[];}catch(e){tasks=[];}
+const $=id=>document.getElementById(id);
+const quotes=['الإنجاز الكبير يبدأ بخطوة صغيرة.','لا تنتظر الحماس؛ ابدأ وسيأتي الحماس في الطريق.','كل دقيقة تركيز تقرّبك من هدفك.','التقدم البسيط أفضل من التوقف.','أنت لا تحتاج أن تكون مثالياً، فقط استمر.','اجعل اليوم أفضل قليلاً من الأمس.'];
+$('today').textContent=new Date().toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'});
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1900);}
+function sparkle(){for(let i=0;i<7;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✨','⭐','🎉','💫'][i%4];s.style.left=(35+Math.random()*30)+'%';s.style.bottom='25px';document.body.append(s);setTimeout(()=>s.remove(),850);}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(tasks));}catch(e){}render();}
+
+const LANGS={
+en:{
+'خطّط، أنجز، وارتقِ كل يوم.':'Plan, achieve, and grow every day.','📊 لوحة إنجازك':'📊 Your Progress','كل المهام':'Total tasks','منجزة':'Completed','نسبة الإنجاز':'Completion','تقدم اليوم':'Today’s progress','ابدأ أول مهمة!':'Start your first task!','➕ أضف مهمة جديدة':'➕ Add a new task','📚 دراسة':'📚 Study','💻 مهارة':'💻 Skill','🏃 صحة':'🏃 Health','🏠 شخصي':'🏠 Personal','🎮 ترفيه':'🎮 Fun','متوسطة':'Medium','مهمة جداً':'High priority','بسيطة':'Low priority','إضافة +':'Add +','الكل':'All','المتبقية':'To do','المنجزة':'Done','لسه مفيش مهام. ابدأ بأول خطوة!':'No tasks yet. Take the first step!','🏆 مستواك':'🏆 Your level','المستوى 1':'Level 1','0 نقطة خبرة':'0 XP','أنجز المهام واجمع نقاط الخبرة. كل مهمة منجزة = 10 نقاط.':'Complete tasks to earn XP. Each task gives 10 points.','💡 دفعة تحفيز':'💡 A little motivation','الإنجاز الكبير يبدأ بخطوة صغيرة.':'Big achievements start with small steps.','اقتباس جديد ↻':'New quote ↻','⚡ مهام سريعة':'⚡ Quick tasks','📖 جلسة مذاكرة':'📖 Study session','25 دقيقة تركيز':'25 minutes of focus','📘 قراءة':'📘 Reading','10 صفحات':'10 pages','🧹 ترتيب':'🧹 Tidy up','5 دقائق':'5 minutes','🧠 تعلم':'🧠 Learn','معلومة جديدة':'Something new','🎯 تحدّي اليوم':'🎯 Daily challenge','أنجز مهمة واحدة مؤجلة اليوم.':'Complete one task you have been putting off today.','تحدٍّ آخر ↻':'Another challenge ↻','🎖️ شاراتك':'🎖️ Your badges','أول إنجاز':'First win','5 إنجازات':'5 wins','10 إنجازات':'10 wins','حذف المنجَز':'Clear completed','إعادة ضبط الكل':'Reset all','🔒 مهامك محفوظة على هذا الجهاز في المتصفح، ولا تُرسل إلى أي مكان.':'🔒 Your tasks are saved in this browser on this device. They are not sent anywhere.','ابدأ':'Start','إيقاف مؤقت':'Pause','إعادة':'Reset','⏱️ مؤقّت التركيز':'⏱️ Focus timer','جلسة تركيز — خذ استراحة قصيرة بعدها':'Focus session — take a short break afterwards','ابحث عن مهمة...':'Search tasks...','حذف':'Delete','تمت إضافة المهمة 💪':'Task added 💪','برافو! +10 نقاط خبرة ⭐':'Great job! +10 XP ⭐','تم حذف المهام المنجزة':'Completed tasks cleared','بدأنا من جديد 🌱':'Fresh start 🌱'
+},
+fr:{
+'خطّط، أنجز، وارتقِ كل يوم.':'Planifiez, accomplissez et progressez chaque jour.','📊 لوحة إنجازك':'📊 Vos progrès','كل المهام':'Toutes les tâches','منجزة':'Terminées','نسبة الإنجاز':'Progression','تقدم اليوم':'Progrès du jour','ابدأ أول مهمة!':'Commencez votre première tâche !','➕ أضف مهمة جديدة':'➕ Ajouter une tâche','📚 دراسة':'📚 Études','💻 مهارة':'💻 Compétence','🏃 صحة':'🏃 Santé','🏠 شخصي':'🏠 Personnel','🎮 ترفيه':'🎮 Loisirs','متوسطة':'Moyenne','مهمة جداً':'Prioritaire','بسيطة':'Faible','إضافة +':'Ajouter +','الكل':'Toutes','المتبقية':'À faire','المنجزة':'Terminées','لسه مفيش مهام. ابدأ بأول خطوة!':'Aucune tâche. Faites le premier pas !','🏆 مستواك':'🏆 Votre niveau','المستوى 1':'Niveau 1','0 نقطة خبرة':'0 XP','أنجز المهام واجمع نقاط الخبرة. كل مهمة منجزة = 10 نقاط.':'Terminez des tâches pour gagner de l’XP. 10 points par tâche.','💡 دفعة تحفيز':'💡 Motivation','الإنجاز الكبير يبدأ بخطوة صغيرة.':'Les grandes réussites commencent par un petit pas.','اقتباس جديد ↻':'Nouvelle citation ↻','⚡ مهام سريعة':'⚡ Tâches rapides','🎯 تحدّي اليوم':'🎯 Défi du jour','تحدٍّ آخر ↻':'Autre défi ↻','🎖️ شاراتك':'🎖️ Vos badges','أول إنجاز':'Première réussite','5 إنجازات':'5 réussites','10 إنجازات':'10 réussites','حذف المنجَز':'Effacer les tâches terminées','إعادة ضبط الكل':'Tout réinitialiser','ابدأ':'Démarrer','إيقاف مؤقت':'Pause','إعادة':'Réinitialiser','⏱️ مؤقّت التركيز':'⏱️ Minuteur de concentration','جلسة تركيز — خذ استراحة قصيرة بعدها':'Session de concentration — faites une courte pause ensuite','حذف':'Supprimer'
+},
+es:{
+'خطّط، أنجز، وارتقِ كل يوم.':'Planifica, logra y crece cada día.','📊 لوحة إنجازك':'📊 Tu progreso','كل المهام':'Todas las tareas','منجزة':'Completadas','نسبة الإنجاز':'Progreso','تقدم اليوم':'Progreso de hoy','ابدأ أول مهمة!':'¡Empieza tu primera tarea!','➕ أضف مهمة جديدة':'➕ Añadir tarea','📚 دراسة':'📚 Estudio','💻 مهارة':'💻 Habilidad','🏃 صحة':'🏃 Salud','🏠 شخصي':'🏠 Personal','🎮 ترفيه':'🎮 Diversión','متوسطة':'Media','مهمة جداً':'Alta prioridad','بسيطة':'Baja prioridad','إضافة +':'Añadir +','الكل':'Todas','المتبقية':'Pendientes','المنجزة':'Hechas','لسه مفيش مهام. ابدأ بأول خطوة!':'Aún no hay tareas. ¡Da el primer paso!','🏆 مستواك':'🏆 Tu nivel','المستوى 1':'Nivel 1','0 نقطة خبرة':'0 XP','💡 دفعة تحفيز':'💡 Motivación','الإنجاز الكبير يبدأ بخطوة صغيرة.':'Los grandes logros empiezan con pequeños pasos.','اقتباس جديد ↻':'Nueva frase ↻','⚡ مهام سريعة':'⚡ Tareas rápidas','🎯 تحدّي اليوم':'🎯 Reto diario','تحدٍّ آخر ↻':'Otro reto ↻','🎖️ شاراتك':'🎖️ Tus insignias','أول إنجاز':'Primer logro','5 إنجازات':'5 logros','10 إنجازات':'10 logros','حذف المنجَز':'Borrar completadas','إعادة ضبط الكل':'Reiniciar todo','ابدأ':'Iniciar','إيقاف مؤقت':'Pausar','إعادة':'Reiniciar','⏱️ مؤقّت التركيز':'⏱️ Temporizador de enfoque','جلسة تركيز — خذ استراحة قصيرة بعدها':'Sesión de concentración — descansa un poco después','حذف':'Eliminar'
+},
+de:{
+'خطّط، أنجز، وارتقِ كل يوم.':'Plane, erreiche Ziele und wachse jeden Tag.','📊 لوحة إنجازك':'📊 Dein Fortschritt','كل المهام':'Alle Aufgaben','منجزة':'Erledigt','نسبة الإنجاز':'Fortschritt','تقدم اليوم':'Heutiger Fortschritt','ابدأ أول مهمة!':'Starte deine erste Aufgabe!','➕ أضف مهمة جديدة':'➕ Aufgabe hinzufügen','📚 دراسة':'📚 Lernen','💻 مهارة':'💻 Fähigkeit','🏃 صحة':'🏃 Gesundheit','🏠 شخصي':'🏠 Privat','🎮 ترفيه':'🎮 Freizeit','متوسطة':'Mittel','مهمة جداً':'Hohe Priorität','بسيطة':'Niedrig','إضافة +':'Hinzufügen +','الكل':'Alle','المتبقية':'Offen','المنجزة':'Erledigt','لسه مفيش مهام. ابدأ بأول خطوة!':'Noch keine Aufgaben. Mach den ersten Schritt!','🏆 مستواك':'🏆 Dein Level','المستوى 1':'Level 1','0 نقطة خبرة':'0 XP','💡 دفعة تحفيز':'💡 Motivation','الإنجاز الكبير يبدأ بخطوة صغيرة.':'Große Erfolge beginnen mit kleinen Schritten.','اقتباس جديد ↻':'Neues Zitat ↻','⚡ مهام سريعة':'⚡ Schnellaufgaben','🎯 تحدّي اليوم':'🎯 Tageschallenge','تحدٍّ آخر ↻':'Neue Challenge ↻','🎖️ شاراتك':'🎖️ Deine Abzeichen','أول إنجاز':'Erster Erfolg','5 إنجازات':'5 Erfolge','10 إنجازات':'10 Erfolge','حذف المنجَز':'Erledigte löschen','إعادة ضبط الكل':'Alles zurücksetzen','ابدأ':'Start','إيقاف مؤقت':'Pause','إعادة':'Zurücksetzen','⏱️ مؤقّت التركيز':'⏱️ Fokus-Timer','جلسة تركيز — خذ استراحة قصيرة بعدها':'Fokuszeit — mach danach eine kurze Pause','حذف':'Löschen'
+},
+tr:{
+'خطّط، أنجز، وارتقِ كل يوم.':'Planla, tamamla ve her gün geliş.','📊 لوحة إنجازك':'📊 İlerlemen','كل المهام':'Tüm görevler','منجزة':'Tamamlandı','نسبة الإنجاز':'Tamamlanma','تقدم اليوم':'Bugünkü ilerleme','ابدأ أول مهمة!':'İlk görevine başla!','➕ أضف مهمة جديدة':'➕ Yeni görev ekle','📚 دراسة':'📚 Ders','💻 مهارة':'💻 Beceri','🏃 صحة':'🏃 Sağlık','🏠 شخصي':'🏠 Kişisel','🎮 ترفيه':'🎮 Eğlence','متوسطة':'Orta','مهمة جداً':'Yüksek öncelik','بسيطة':'Düşük öncelik','إضافة +':'Ekle +','الكل':'Tümü','المتبقية':'Bekleyen','المنجزة':'Tamamlanan','لسه مفيش مهام. ابدأ بأول خطوة!':'Henüz görev yok. İlk adımı at!','🏆 مستواك':'🏆 Seviyen','المستوى 1':'Seviye 1','0 نقطة خبرة':'0 XP','💡 دفعة تحفيز':'💡 Motivasyon','الإنجاز الكبير يبدأ بخطوة صغيرة.':'Büyük başarılar küçük adımlarla başlar.','اقتباس جديد ↻':'Yeni söz ↻','⚡ مهام سريعة':'⚡ Hızlı görevler','🎯 تحدّي اليوم':'🎯 Günlük görev','تحدٍّ آخر ↻':'Başka görev ↻','🎖️ شاراتك':'🎖️ Rozetlerin','أول إنجاز':'İlk başarı','5 إنجازات':'5 başarı','10 إنجازات':'10 başarı','حذف المنجَز':'Tamamlananları sil','إعادة ضبط الكل':'Tümünü sıfırla','ابدأ':'Başlat','إيقاف مؤقت':'Duraklat','إعادة':'Sıfırla','⏱️ مؤقّت التركيز':'⏱️ Odak zamanlayıcısı','جلسة تركيز — خذ استراحة قصيرة بعدها':'Odak oturumu — sonra kısa bir mola ver','حذف':'Sil'
+}
+};
+const originalTexts=new WeakMap();
+function applyLanguage(){
+ const lang=$('language').value||'ar', dict=LANGS[lang]||{};
+ document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ document.title=lang==='ar'?'إنجازي — خطّط، أنجز، ارتقِ':lang==='en'?'Engazy — Plan, Achieve, Grow':'Engazy';
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ let node;
+ while(node=walker.nextNode()){
+   if(!originalTexts.has(node))originalTexts.set(node,node.nodeValue);
+   const original=originalTexts.get(node).trim();
+   if(!original)continue;
+   const translated=dict[original];
+   if(translated)node.nodeValue=node.nodeValue.replace(original,translated);
+   else if(lang==='ar' && node.nodeValue!==originalTexts.get(node))node.nodeValue=originalTexts.get(node);
+ }
+ const placeholders={'newTask':{'en':'e.g. Study for 30 minutes...','fr':'Ex. Étudier 30 minutes...','es':'Ej. Estudiar 30 minutos...','de':'z. B. 30 Minuten lernen...','tr':'Örn. 30 dakika ders çalış...'},'searchTask':{'en':'🔎 Search tasks...','fr':'🔎 Rechercher une tâche...','es':'🔎 Buscar tareas...','de':'🔎 Aufgaben suchen...','tr':'🔎 Görev ara...'}};
+ Object.entries(placeholders).forEach(([id,vals])=>{$(id).placeholder=lang==='ar'?(id==='newTask'?'مثلاً: أذاكر 30 دقيقة...':'🔎 ابحث عن مهمة...'):(vals[lang]||vals.en);});
+}
+function render(){
+ const list=$('tasks');list.innerHTML='';
+ const q=($('searchTask')?.value||'').trim().toLowerCase();
+ const visible=tasks.map((t,i)=>({...t,index:i})).filter(t=>(filter==='all'||(filter==='active'&&!t.done)||(filter==='done'&&t.done))&&(!q||t.text.toLowerCase().includes(q)));
+ visible.forEach(t=>{
+  const li=document.createElement('li');li.className='task'+(t.done?' done':'');
+  const check=document.createElement('input');check.type='checkbox';check.checked=!!t.done;check.setAttribute('aria-label','إنجاز المهمة');
+  check.addEventListener('change',()=>{tasks[t.index].done=check.checked;save();if(check.checked){toast('برافو! +10 نقاط خبرة ⭐');sparkle();}});
+  const wrap=document.createElement('div');wrap.className='taskname';
+  const name=document.createElement('div');name.textContent=t.text;
+  const meta=document.createElement('div');meta.className='meta';
+  const cat=document.createElement('span');cat.className='chip';cat.textContent=t.category||'📌 عام';
+  const pri=document.createElement('span');pri.className='chip '+(t.priority==='high'?'priority-high':t.priority==='low'?'priority-low':'priority-medium');pri.textContent=t.priority==='high'?'مهمة جداً':t.priority==='low'?'بسيطة':'متوسطة';
+  meta.append(cat,pri);
+  if(t.due){const due=document.createElement('span');due.className='chip';due.textContent='📅 '+t.due;meta.append(due);}
+  wrap.append(name,meta);
+  const del=document.createElement('button');del.className='delete';del.textContent='حذف';del.addEventListener('click',()=>{tasks.splice(t.index,1);save();});
+  li.append(check,wrap,del);list.append(li);
+ });
+ const total=tasks.length,done=tasks.filter(t=>t.done).length,p=total?Math.round(done/total*100):0,xp=done*10,level=Math.floor(xp/50)+1,within=xp%50;
+ $('total').textContent=total;$('completed').textContent=done;$('percent').textContent=p+'%';$('bar').style.width=p+'%';
+ $('progressText').textContent=total?(done===total?'ممتاز! أكملت كل المهام 🎉':done+' من '+total+' مهام'):'ابدأ أول مهمة!';
+ $('level').textContent='المستوى '+level;$('xpText').textContent=xp+' نقطة خبرة · '+within+'/50 للمستوى التالي';$('xpBar').style.width=(within/50*100)+'%';
+ $('empty').style.display=visible.length?'none':'block';
+ $('badge1').classList.toggle('unlocked',done>=1);$('badge5').classList.toggle('unlocked',done>=5);$('badge10').classList.toggle('unlocked',done>=10);
+ applyLanguage();
+ document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+}
+$('form').addEventListener('submit',e=>{e.preventDefault();const v=$('newTask').value.trim();if(!v)return;tasks.push({text:v,category:$('category').value,priority:$('priority').value,due:$('dueDate').value,done:false});$('newTask').value='';$('dueDate').value='';save();toast('تمت إضافة المهمة 💪');$('newTask').focus();});
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;render();}));
+document.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',()=>{tasks.push({text:b.dataset.quick,category:'⚡ سريعة',priority:'medium',done:false});save();toast('أضفنا لك مهمة سريعة!');}));
+$('newQuote').addEventListener('click',()=>{$('quote').textContent=quotes[Math.floor(Math.random()*quotes.length)];});
+$('clearDone').addEventListener('click',()=>{const n=tasks.filter(t=>t.done).length;if(!n){toast('لا توجد مهام منجزة للحذف');return;}if(confirm('تحذف '+n+' مهمة منجزة؟')){tasks=tasks.filter(t=>!t.done);save();toast('تم حذف المهام المنجزة');}});
+$('reset').addEventListener('click',()=>{if(confirm('هل تريد حذف كل المهام وإعادة ضبط التطبيق؟')){tasks=[];save();toast('بدأنا من جديد 🌱');}});
+$('searchTask').addEventListener('input',render);
+$('language').value=localStorage.getItem('engazy_language')||'ar';
+$('language').addEventListener('change',()=>{localStorage.setItem('engazy_language',$('language').value);applyLanguage();render();});
+const challenges=['أنجز مهمة واحدة مؤجلة اليوم.','اقرأ أو تعلّم لمدة 15 دقيقة.','رتّب مكانك لمدة 5 دقائق.','ابتعد عن المشتتات خلال جلسة تركيز واحدة.','اكتب هدفاً مهماً تريد تحقيقه هذا الأسبوع.'];
+$('newChallenge').addEventListener('click',()=>{$('challengeText').textContent=challenges[Math.floor(Math.random()*challenges.length)];});
+let seconds=25*60, timerId=null;
+function showTimer(){const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');$('timer').textContent=m+':'+s;}
+$('timerStart').addEventListener('click',()=>{if(timerId!==null)return;timerId=setInterval(()=>{if(seconds>0){seconds--;showTimer();}else{clearInterval(timerId);timerId=null;toast('انتهت جلسة التركيز! خذ استراحة 👏');sparkle();}},1000);});
+$('timerPause').addEventListener('click',()=>{if(timerId!==null){clearInterval(timerId);timerId=null;}});
+$('timerReset').addEventListener('click',()=>{if(timerId!==null)clearInterval(timerId);timerId=null;seconds=25*60;showTimer();});
+showTimer();
+render();
+</script>
+</body>
+</html>
